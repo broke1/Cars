@@ -1,0 +1,42 @@
+[
+  {
+    "login": "number_1",
+    "ready": false
+  },
+  {
+    "login": "number_2",
+    "ready": true
+  },
+  {
+    "login": "number_3",
+    "ready": false
+  },
+  {
+    "login": "number_4",
+    "ready": false
+  },
+  {
+    "login": "number_5",
+    "ready": true
+  },
+  {
+    "login": "number_6",
+    "ready": false
+  },
+  {
+    "login": "number_7",
+    "ready": false
+  },
+  {
+    "login": "number_8",
+    "ready": true
+  },
+  {
+    "login": "number_9",
+    "ready": false
+  },
+  {
+    "login": "number_10",
+    "ready": false
+  }
+]

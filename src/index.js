@@ -1,16 +1,23 @@
 
 
-// import './js/index.js'
-//import './sass/style.sass'
-// import './css/style.css'
 
-window.Vue = require('vue')
+window.Vue = require('vue') // подключаем Vue sdfsdf
 
-import store from './store/index.js'
+import store from './store/index.js' // подключаем файл с натсройками хранилища Vuex
 
-Vue.component('main-title', require('./components/mainTitle.vue').default)
+// import regeneratorRuntime from "regenerator-runtime"; // Для работы с асинхронными  функциями
 
-const app = new Vue({
-    store: store,
-    el: "#app"
+import "./styles/main.sass"
+
+
+Vue.component('main-page', require('./components/mainPage/mainPage.vue').default)
+
+
+
+
+
+// создаем экземпляр vue где подключаем самое главное переадрасицию, визуализацию элемнетов и хранилище
+new Vue({
+  store,
+  el: "#app" 
 })

@@ -5,8 +5,8 @@ Vue.use(Vuex)
 
 import store from './store.js'
 
-export default new Vuex.Store({
-    modules: {
-        store
-    }
+export default new Vuex.Store ({
+  modules: {
+    store
+  }
 })
