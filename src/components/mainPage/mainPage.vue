@@ -6,18 +6,33 @@
         class="main_section_container_page_title"
         :class="{ main_section_container_page_title__show: title.show }"
       >
-        {{ title.name }}
+        <span>
+          {{ title.name }}
+        </span>
       </div>
       <div class="main_section_container_page_body">
-        <div class="main_section_container_page_body_row">
+        <div 
+          v-for="(player, index) in playersData" 
+          :key="index"
+          class="main_section_container_page_body_row" 
+          :class="{ main_section_container_page_body_row__show: playersBlockShow }"
+          :style="{transitionDelay: `${index*150}ms`}"
+        >
           <div class="main_section_container_page_body_row_index, main_section_container_page_body_row_item">
-            {{ 1 }}
+            {{ index + 1 }}
           </div>
           <div class="main_section_container_page_body_row_login, main_section_container_page_body_row_item">
-            {{ "broke" }}
+            {{ player.login }}
           </div>
           <div class="main_section_container_page_body_row_btn, main_section_container_page_body_row_item">
-            {{ "Поехали" }}
+            <div 
+              class="main_section_container_page_body_row_btn_inside"
+              :class="{ main_section_container_page_body_row_btn_inside__active: player.ready }"
+            >
+              <span>
+                {{ "Поехали" }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -37,7 +52,8 @@ export default {
         name: "Cars Project",
         show: false,
       },
-      playersData: []
+      playersData: [],
+      playersBlockShow: false
 
     } 
   },
@@ -47,9 +63,13 @@ export default {
   mounted() {
     setTimeout( () => {
       this.title.show = true
-    },1000)
+    },500)
     this.$store.getters.getPlayersData().then( res => {
+      res.sort((a, b) => b.ready - a.ready)
       this.playersData = res
+      setTimeout( () => {
+        this.playersBlockShow = true
+      },700)
     })
   } 
   
