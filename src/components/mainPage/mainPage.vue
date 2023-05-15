@@ -60,13 +60,17 @@ export default {
   methods: {
     getPlayersDataLocal: function(delay)  {
       this.playersBlockShow = false
-      this.$store.getters.getPlayersData().then( res => {
-        res.sort((a, b) => b.ready - a.ready)
-        this.playersData = res
-        setTimeout( () => {
-          this.playersBlockShow = true
-        },delay)
-      })
+      setTimeout( () => {
+        this.$store.getters.getPlayersData().then( res => {
+          if (delay == 1500) res[4].ready = true
+          res.sort((a, b) => b.ready - a.ready)
+          this.playersData = res
+          setTimeout( () => {
+            this.playersBlockShow = true
+          },100)
+          
+        })
+      },delay)
     }
   },
   mounted() {

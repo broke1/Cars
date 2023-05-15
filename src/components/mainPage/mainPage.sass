@@ -107,8 +107,12 @@
             padding: 10px  15px
             border-radius: 5px
             transition: all 0.4s ease
-            background: transparent
+            // background: transparent
+            // color: $black
+            background: $white
             color: $black
+            opacity: 0
+            cursor: pointer
             position: relative
 
             span
@@ -129,9 +133,7 @@
               opacity: 0.3
 
             &__active
-              background: $white
-              color: $black
-              cursor: pointer
+              opacity: 1
 
         &__show
           opacity: 1
