@@ -3,7 +3,8 @@ import mockPlayers from './mockPlayers.json'
 
 export default {
   state: {
-    dataPlayers: mockPlayers
+    dataPlayers: mockPlayers,
+    playersBlockShow: false
   },
   mutations: {
 
@@ -15,6 +16,8 @@ export default {
     getPlayersData: (state) => {
       return () => {
         return new Promise((resolve) => {
+
+          state.playersBlockShow = false
 
           const response = services.getPlayersData()
           

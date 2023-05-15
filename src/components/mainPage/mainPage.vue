@@ -58,19 +58,25 @@ export default {
     } 
   },
   methods: {
-    
+    getPlayersDataLocal: function(delay)  {
+      this.playersBlockShow = false
+      this.$store.getters.getPlayersData().then( res => {
+        res.sort((a, b) => b.ready - a.ready)
+        this.playersData = res
+        setTimeout( () => {
+          this.playersBlockShow = true
+        },delay)
+      })
+    }
   },
   mounted() {
     setTimeout( () => {
       this.title.show = true
     },500)
-    this.$store.getters.getPlayersData().then( res => {
-      res.sort((a, b) => b.ready - a.ready)
-      this.playersData = res
-      setTimeout( () => {
-        this.playersBlockShow = true
-      },700)
-    })
+    this.getPlayersDataLocal(700)
+    setTimeout( () => {
+      this.getPlayersDataLocal(1500)
+    },5000)
   } 
   
 }
