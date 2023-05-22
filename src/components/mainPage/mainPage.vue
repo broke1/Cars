@@ -28,6 +28,7 @@
             <div 
               class="main_section_container_page_body_row_btn_inside"
               :class="{ main_section_container_page_body_row_btn_inside__active: player.ready }"
+              @click="moveToStream"
             >
               <span>
                 {{ "Поехали" }}
@@ -62,7 +63,7 @@ export default {
       this.playersBlockShow = false
       setTimeout( () => {
         this.$store.getters.getPlayersData().then( res => {
-          if (delay == 1500) res[4].ready = true
+          if (delay == 1200) res[4].ready = true
           res.sort((a, b) => b.ready - a.ready)
           this.playersData = res
           setTimeout( () => {
@@ -71,7 +72,11 @@ export default {
           
         })
       },delay)
+    },
+    moveToStream: function() {
+      this.$router.push({ path: "/streampage" }) 
     }
+    
   },
   mounted() {
     setTimeout( () => {
@@ -79,8 +84,8 @@ export default {
     },500)
     this.getPlayersDataLocal(700)
     setTimeout( () => {
-      this.getPlayersDataLocal(1500)
-    },5000)
+      this.getPlayersDataLocal(1200)
+    },2000)
   } 
   
 }
